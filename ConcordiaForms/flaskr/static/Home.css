@@ -1,0 +1,11 @@
+.active{
+    border-bottom: 5px solid orange ;
+}
+.third-section{
+    height: 300px;
+}
+.background-image{
+    background: url('./Home\ Page\ Icons/Home\ Page\ Icons/No_colonies_blank_world_map.PNG');
+    /* background-color: inherit; */
+    
+}

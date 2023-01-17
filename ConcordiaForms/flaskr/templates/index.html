@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" href="../static/Home.css" />
+    <link
+      rel="stylesheet"
+      href="./fontawesome-free-6.2.0-web/css/fontawesome.css"
+    />
+    <link rel="stylesheet" href="./fontawesome-free-6.2.0-web/css/brands.css" />
+    <link rel="stylesheet" href="./fontawesome-free-6.2.0-web/css/solid.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <title>Home</title>
+  </head>
+  <body>
+    <section class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+        <a class="navbar-brand" href="/"> Concordia Forms </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/form">Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/survey">Survey</a>
+            </li>
+            {% if userID %}
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn btn-outline-warning"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                Your api key
+              </button>
+            </li>
+            {% endif %}
+          </ul>
+          <div>
+            <ul class="navbar-nav">
+              {% if userID %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+              {% else %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link btn btn-danger text-white"
+                  href="/signin"
+                  style="border-radius: 10px; width: 100px"
+                  >Login</a
+                >
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <section class="first-section mt-5">
+      <div
+        class="container d-flex flex-row justify-content-center align-items-center"
+      >
+        <div class="col-3">
+          <div class="image d-flex justify-content-end">
+            <img
+              src="../static/Home Page Icons/Home Page Icons/test.png"
+              width="50%"
+              height="100%"
+            />
+          </div>
+        </div>
+        <div class="col-5">
+          <p class="display-4">Get insights quickly, with</p>
+          <h1 class="text-warning">Concordia Forms</h1>
+          <p>
+            Easily create and share online forms and surveys, and analyze
+            responses in real-time.
+          </p>
+          <div class="d-flex flex-row">
+            {% if userID %}
+            {% else %}
+            <div class="col-7">
+              <button class="btn btn-danger btn-block text-white">login</button>
+            </div>
+            <div class="col-5">
+              <small>Dont have an account?</small>
+              <small class="text-danger text-unde">signup here</small>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-4 p-0">
+          <img
+            src="../static/Home Page Icons/Home Page Icons/analytics.png"
+            width="100%"
+            height="100%"
+          />
+        </div>
+      </div>
+    </section>
+    <hr />
+    <section class="second-section position-relative">
+      <div class="container">
+        <div
+          class="d-flex flex-row justify-content-center align-items-center h-50"
+        >
+          <div
+            class="col-4 d-flex flex-column justify-content-center align-items-center"
+          >
+            <img
+              src="../static/Home Page Icons/Home Page Icons/image.png"
+              width="25%"
+              height="25%"
+            />
+            <div class="text-center font-weight-bold">Upload image</div>
+            <div>
+              A picture really can be worth a thousand words. Pro users can add
+              images directly to their questions as well as their opening and
+              closing messages.
+            </div>
+          </div>
+          <div
+            class="col-4 d-flex flex-column justify-content-center align-items-center h-50"
+          >
+            <img
+              src="../static/Home Page Icons/Home Page Icons/easy.png"
+              width="25%"
+              height="25%"
+            />
+            <div class="text-center font-weight-bold">Fast and easy</div>
+            <div>
+              We ve done our best to make creating surveys as enjoyable as
+              possible. We ve got the fastest and most intuitive user experience
+              on the block. Creating online surveys has never been more fun and
+              hassle-free.
+            </div>
+          </div>
+        </div>
+        <div
+          class="d-flex flex-row justify-content-center align-items-center h-50 mt-3"
+        >
+          <div
+            class="col-4 d-flex flex-column justify-content-center align-items-center"
+          >
+            <img
+              src="../static/Home Page Icons/Home Page Icons/statistics.png"
+              width="25%"
+              height="25%"
+            />
+            <div class="text-center font-weight-bold">Analytics</div>
+            <div>
+              A picture really can be worth a thousand words. Pro users can add
+              images directly to their questions as well as their opening and
+              closing messages.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr />
+    <section class="third-section position-relative">
+      <h3
+        class="position-absolute"
+        style="
+          width: 50%;
+          left: 50%;
+          transform: translate(-50%, 70%);
+          color: whitesmoke;
+          z-index: 1;
+        "
+      >
+        Because of our cloud deployment. it’s easy access no matter where you
+        are connecting from. you can share your surveys with anyone that has
+        internet access.
+      </h3>
+      <div class="w-100 h-100 background-image"></div>
+      <div
+        class="backdrop position-absolute w-100 h-100"
+        style="top: 0; left: 0; opacity: 0.7; background-color: orange"
+      ></div>
+    </section>
+    <hr />
+    <section class="fourth-section">
+      <div class="container text-center">
+        <h3>How Can You Use CONCORDIA FORMS?</h3>
+        <p>Market Reasearch</p>
+        <p>Education Research</p>
+        <p>Human Resourses Surveys</p>
+        <p>Customer Satisfaction Surveys</p>
+        <p>Friends And Families</p>
+        <p>Events</p>
+        <p>Tracking Progress</p>
+        <p>more and more ...</p>
+      </div>
+    </section>
+    <hr />
+    <section class="footer position-relative">
+      <div class="container text-center">
+        <small>All Rights Reserved Team CATDOG2</small>
+        <br />
+        <small>Fall and Winter of 2022</small>
+      </div>
+    </section>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Your api key</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">{{userID}}</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

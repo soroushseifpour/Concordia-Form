@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question</title>
+    <link rel="stylesheet" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" href="../static/survey.css" />
+    <link
+      rel="stylesheet"
+      href="../static/fontawesome-free-6.2.0-web/css/fontawesome.css"
+    />
+    
+    <link rel="stylesheet" href="../static/fontawesome-free-6.2.0-web/css/brands.css" />
+    <link rel="stylesheet" href="../static/fontawesome-free-6.2.0-web/css/solid.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="./fontawesome-free-6.2.0-web/css/brands.css" />
+    <link rel="stylesheet" href="./fontawesome-free-6.2.0-web/css/solid.css" />
+   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="./../static/js/survey.js" defer></script>
+    <script src="./../static/js/ajax.js" defer></script>
+  </head>
+  <body>
+    <section class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+        <a class="navbar-brand" href="/"> Concordia Forms </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/form">Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/survey">Survey</a>
+            </li>
+            {% if userID %}
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn btn-outline-warning"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                Your api key
+              </button>
+            </li>
+            {% endif %}
+          </ul>
+          <div>
+            <ul class="navbar-nav">
+              {% if userID %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+              {% else %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link btn btn-danger text-white"
+                  href="/signin"
+                  style="border-radius: 10px; width: 100px"
+                  >Login</a
+                >
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <div
+      class="container d-flex flex-column justify-content-center align-items-center w-100"
+    >
+      <div class="question w-100">
+        <div class="card mt-4">
+          <div class="header border-bottom" style="background-color: none">
+            <input
+              class="p-4 w-100 border-0 h1 title"
+              style="outline: none"
+              placeholder="Untitle One"
+            />
+          </div>
+          <div class="card-body">
+            <input
+              type="text"
+              class="w-100 border-0 description"
+              style="outline: none"
+              placeholder="form description"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="card mt-4 d-flex flex-column w-50 cardquestion">
+        <div class="d-flex align-items-center" style="width: 100%">
+          <div class="left mr-2">
+            <div class="">
+              <input
+                class="p-4 w-100 border-0 h4 question"
+                style="outline: none"
+                placeholder="Untitle One"
+              />
+              <div class="form-group form-check d-flex ">
+                <input type="checkbox" class="mr-2" id="exampleCheck1" />
+                <label class="form-check-label" for="exampleCheck1">
+                  <input
+                    placeholder="Write your Option"
+                    class="border-0"
+                    style="outline: none"
+                  />
+                </label>
+              </div>
+              <button class="btn btn-adding btn-outline-primary m-2" onclick="addingBtn(this)">Add another option</button>
+            </div>
+          </div>
+          <div class="right">
+            <div class="btn-group d-flex">
+              <button
+                class="btn-dropdown btn btn-outline-secondary btn-lg dropdown-toggle d-flex align-items-center"
+                type="button"
+                data-toggle="dropdown"
+              >
+              <div class="item m-0 p-0 d-flex">
+                <i class="fa-solid fa-square-check mr-2"></i>
+                <small>Checkboxs</small>
+              </div>
+              </button>
+              <div class="dropdown-menu">
+                <div
+                  class="dropdown-item d-flex justify-content-center align-items-center"
+                  href="#"
+                  id="checkbox"
+                  onclick="addingCheckBoxOptions(this)"
+                >
+                <div class="item" onclick="dropdownHandler(this)">
+                  <i class="fa-solid fa-square-check mr-2"></i>
+                  <small>Checkboxs</small>
+                </div>
+                </div>
+              <div
+                  class="dropdown-item d-flex justify-content-center align-items-center"
+                  id="dropdowning"
+                  onclick="addingDropdowing(this)"
+                >
+                <div class="item" onclick="dropdownHandler(this)">
+                  <i class="fa-solid fa-caret-down mr-2"></i>
+                  <small>Dropdown</small>
+                </div>
+            </div>
+                <div
+                  class="dropdown-item d-flex justify-content-center align-items-center"
+                  id="multiplechoice"
+                  onclick="addingmultiplechoice(this)"
+                >
+                <div class="item" onclick="dropdownHandler(this)">
+                  <i class="fa-solid fa-circle-dot mr-2"></i>
+                  <small>Multiple Choice</small>
+                </div>
+              </div>
+                <div
+                  class="dropdown-item d-flex justify-content-center align-items-center"
+                  id="paragraph"
+                  onclick="addingParagraph(this)"
+                >
+                <div class="item" onclick="dropdownHandler(this)">
+
+                  <i class="fa-solid fa-align-left mr-2"></i>
+                  <small>Paragraph</small>
+                </div>
+              </div>
+                <div
+                  class="dropdown-item d-flex justify-content-center align-items-center"
+                  id="fileuploader"
+                  onclick="addingFileUploader(this)"
+                >
+                <div class="item" onclick="dropdownHandler(this)">
+                  <i class="fa-solid fa-file-arrow-up mr-2"></i>
+                  <small>File upload</small>
+                </div>
+              </div>
+                <div
+                  class="dropdown-item d-flex justify-content-center align-items-center"
+                  id="ShortAnswer"
+                  onclick="addingShortAnswer(this)"
+                >
+                <div class="item" onclick="dropdownHandler(this)">
+                  <i class="fa-regular fa-text mr-2"></i>
+                  <small>Short answer</small>
+                </div>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="footer w-100 d-flex flex-row justify-content-end ">
+            <div class="p-2 deleting" onclick="deletingSection(this)">
+              <i class="fa-solid fa-trash"></i>
+            </div>
+            <div class="p-2 adding" onclick="addingSection(this)">
+              <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="p-2 copying" onclick="duplicateSection(this)">
+              <i class="fa-solid fa-copy"></i>
+            </div>
+            <div class="p-2">
+              <input type="checkbox" id="exampleCheck1" />
+              <label class="form-check-label" for="exampleCheck1">
+                required*
+              </label>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="w-100 d-flex justify-content-center mt-4 mb-4">
+        <button class="btn btn-outline-primary w-25 submit">Submit</button>
+    </div>
+    <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Your api key</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">{{userID}}</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
